@@ -541,15 +541,10 @@ wheels = [
 [[package]]
 name = "ecomplexity"
 version = "0.5.3"
-source = { registry = "https://pypi.org/simple" }
+source = { git = "https://github.com/harvard-growth-lab/py-ecomplexity?rev=develop#554cc5dc0d9fe5b72adee54b5cd64fb4953d0a20" }
 dependencies = [
     { name = "numpy" },
     { name = "pandas" },
-    { name = "scikit-learn" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/5b/5e/5efc2dfef2c6fc0e993ad00c02951a11be9b01ab5f32aae0180bf1c38d28/ecomplexity-0.5.3.tar.gz", hash = "sha256:f9eaed2bf58495de4f8648e05c452edc1dc8ced300b1d99856a19dd38c88b06c", size = 15447, upload-time = "2024-04-14T10:26:05.553Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/e5/ab/b35b670e7ea69fcfd6f5e015edbb47e0e003fa712c54f3481a21ef87aead/ecomplexity-0.5.3-py3-none-any.whl", hash = "sha256:60581b61bd7e4e32174f344a36918c833d83ab5a4892427dd1f8d034a3dedd54", size = 17395, upload-time = "2024-04-14T10:26:03.458Z" },
 ]
 
 [[package]]
@@ -600,7 +595,7 @@ requires-dist = [
     { name = "adjusttext" },
     { name = "contextily", marker = "extra == 'geo'" },
     { name = "duckdb" },
-    { name = "ecomplexity" },
+    { name = "ecomplexity", git = "https://github.com/harvard-growth-lab/py-ecomplexity?rev=develop" },
     { name = "geopandas", marker = "extra == 'geo'" },
     { name = "ipykernel" },
     { name = "ipywidgets" },

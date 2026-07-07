@@ -56,6 +56,9 @@ line-length = 99
 [tool.ruff.format]
 docstring-code-format = true
 
+[tool.uv.sources]
+ecomplexity = { git = "https://github.com/harvard-growth-lab/py-ecomplexity", rev = "develop" }
+
 [tool.uv]
 # This is a tutorial dependency environment, not a distributable package —
 # don't try to build/install the project root, just resolve the dependencies.
