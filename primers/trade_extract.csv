@@ -1,0 +1,121 @@
+year,country_iso,country,product_id,product,domain,export_value
+2013,EG,Egypt,P - 8544,Electric Wire and Cable,Machinery and transportation,866159358
+2013,EG,Egypt,P - 2510,Natural Phosphates,Raw materials and mining,220224472
+2013,EG,Egypt,P - 0810,Other Fresh Fruits,Plant products and food processing,154598874
+2013,EG,Egypt,P - 6204,Women's Woven Suits,"Wood, paper and textiles",153361983
+2013,EG,Egypt,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,122603992
+2013,EG,Egypt,P - 0702,Tomatoes,Plant products and food processing,61598511
+2013,EG,Egypt,P - 8703,Passenger Cars,Machinery and transportation,50540207
+2013,EG,Egypt,P - 8708,Vehicle Parts,Machinery and transportation,41145255
+2013,EG,Egypt,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,34584013
+2013,EG,Egypt,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,20994983
+2013,EG,Egypt,P - 8704,Trucks,Machinery and transportation,5552018
+2013,EG,Egypt,P - 1605,Prepared Seafood,Plant products and food processing,1125400
+2013,EG,Egypt,P - 1604,Prepared Fish and Caviar,Plant products and food processing,779283
+2013,EG,Egypt,P - 8541,Semiconductors,Machinery and transportation,573741
+2013,EG,Egypt,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,117564
+2013,KR,Korea,P - 8703,Passenger Cars,Machinery and transportation,45719072592
+2013,KR,Korea,P - 8708,Vehicle Parts,Machinery and transportation,25110701486
+2013,KR,Korea,P - 8541,Semiconductors,Machinery and transportation,6054144935
+2013,KR,Korea,P - 8544,Electric Wire and Cable,Machinery and transportation,3656630686
+2013,KR,Korea,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,2394695581
+2013,KR,Korea,P - 8704,Trucks,Machinery and transportation,2335320710
+2013,KR,Korea,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,253357032
+2013,KR,Korea,P - 6204,Women's Woven Suits,"Wood, paper and textiles",204332622
+2013,KR,Korea,P - 1605,Prepared Seafood,Plant products and food processing,124113581
+2013,KR,Korea,P - 1604,Prepared Fish and Caviar,Plant products and food processing,104335197
+2013,KR,Korea,P - 0810,Other Fresh Fruits,Plant products and food processing,39327128
+2013,KR,Korea,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,19796388
+2013,KR,Korea,P - 0702,Tomatoes,Plant products and food processing,10691472
+2013,KR,Korea,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,467943
+2013,KR,Korea,P - 2510,Natural Phosphates,Raw materials and mining,69076
+2013,MA,Morocco,P - 8544,Electric Wire and Cable,Machinery and transportation,2032154099
+2013,MA,Morocco,P - 8703,Passenger Cars,Machinery and transportation,1532066388
+2013,MA,Morocco,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,1338498162
+2013,MA,Morocco,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,1259142590
+2013,MA,Morocco,P - 2510,Natural Phosphates,Raw materials and mining,1223586366
+2013,MA,Morocco,P - 6204,Women's Woven Suits,"Wood, paper and textiles",1153721614
+2013,MA,Morocco,P - 1604,Prepared Fish and Caviar,Plant products and food processing,658898109
+2013,MA,Morocco,P - 0702,Tomatoes,Plant products and food processing,437700147
+2013,MA,Morocco,P - 8541,Semiconductors,Machinery and transportation,404778724
+2013,MA,Morocco,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,398082107
+2013,MA,Morocco,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,203070039
+2013,MA,Morocco,P - 8704,Trucks,Machinery and transportation,144335154
+2013,MA,Morocco,P - 0810,Other Fresh Fruits,Plant products and food processing,100089904
+2013,MA,Morocco,P - 8708,Vehicle Parts,Machinery and transportation,93933387
+2013,MA,Morocco,P - 1605,Prepared Seafood,Plant products and food processing,20524417
+2013,TN,Tunisia,P - 8544,Electric Wire and Cable,Machinery and transportation,1477308842
+2013,TN,Tunisia,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,441344211
+2013,TN,Tunisia,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,387265513
+2013,TN,Tunisia,P - 6204,Women's Woven Suits,"Wood, paper and textiles",340034119
+2013,TN,Tunisia,P - 8708,Vehicle Parts,Machinery and transportation,272227189
+2013,TN,Tunisia,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,196615686
+2013,TN,Tunisia,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,171503735
+2013,TN,Tunisia,P - 1604,Prepared Fish and Caviar,Plant products and food processing,30844298
+2013,TN,Tunisia,P - 0702,Tomatoes,Plant products and food processing,19931407
+2013,TN,Tunisia,P - 8541,Semiconductors,Machinery and transportation,11329687
+2013,TN,Tunisia,P - 2510,Natural Phosphates,Raw materials and mining,8292427
+2013,TN,Tunisia,P - 8703,Passenger Cars,Machinery and transportation,6667320
+2013,TN,Tunisia,P - 0810,Other Fresh Fruits,Plant products and food processing,4019909
+2013,TN,Tunisia,P - 8704,Trucks,Machinery and transportation,2477805
+2013,TN,Tunisia,P - 1605,Prepared Seafood,Plant products and food processing,166174
+2023,EG,Egypt,P - 8544,Electric Wire and Cable,Machinery and transportation,893432172
+2023,EG,Egypt,P - 2510,Natural Phosphates,Raw materials and mining,326669480
+2023,EG,Egypt,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,282131584
+2023,EG,Egypt,P - 6204,Women's Woven Suits,"Wood, paper and textiles",253796391
+2023,EG,Egypt,P - 0810,Other Fresh Fruits,Plant products and food processing,220505159
+2023,EG,Egypt,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,156263943
+2023,EG,Egypt,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,76290467
+2023,EG,Egypt,P - 0702,Tomatoes,Plant products and food processing,44781275
+2023,EG,Egypt,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,41666072
+2023,EG,Egypt,P - 1605,Prepared Seafood,Plant products and food processing,28645579
+2023,EG,Egypt,P - 8708,Vehicle Parts,Machinery and transportation,14374892
+2023,EG,Egypt,P - 8703,Passenger Cars,Machinery and transportation,11354907
+2023,EG,Egypt,P - 1604,Prepared Fish and Caviar,Plant products and food processing,2053510
+2023,EG,Egypt,P - 8704,Trucks,Machinery and transportation,1882370
+2023,EG,Egypt,P - 8541,Semiconductors,Machinery and transportation,487432
+2023,KR,Korea,P - 8703,Passenger Cars,Machinery and transportation,55345716887
+2023,KR,Korea,P - 8708,Vehicle Parts,Machinery and transportation,15899694187
+2023,KR,Korea,P - 8544,Electric Wire and Cable,Machinery and transportation,3164207650
+2023,KR,Korea,P - 8541,Semiconductors,Machinery and transportation,3058085516
+2023,KR,Korea,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,2490073874
+2023,KR,Korea,P - 8704,Trucks,Machinery and transportation,1423449957
+2023,KR,Korea,P - 1605,Prepared Seafood,Plant products and food processing,252349332
+2023,KR,Korea,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,221272324
+2023,KR,Korea,P - 6204,Women's Woven Suits,"Wood, paper and textiles",211406409
+2023,KR,Korea,P - 1604,Prepared Fish and Caviar,Plant products and food processing,114066059
+2023,KR,Korea,P - 0810,Other Fresh Fruits,Plant products and food processing,60324075
+2023,KR,Korea,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,22869049
+2023,KR,Korea,P - 0702,Tomatoes,Plant products and food processing,7734829
+2023,KR,Korea,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,493596
+2023,KR,Korea,P - 2510,Natural Phosphates,Raw materials and mining,96908
+2023,MA,Morocco,P - 8703,Passenger Cars,Machinery and transportation,5215949542
+2023,MA,Morocco,P - 8544,Electric Wire and Cable,Machinery and transportation,3698442286
+2023,MA,Morocco,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,3561308281
+2023,MA,Morocco,P - 6204,Women's Woven Suits,"Wood, paper and textiles",1486666612
+2023,MA,Morocco,P - 8708,Vehicle Parts,Machinery and transportation,1136869795
+2023,MA,Morocco,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,865582051
+2023,MA,Morocco,P - 0702,Tomatoes,Plant products and food processing,770204622
+2023,MA,Morocco,P - 8541,Semiconductors,Machinery and transportation,684546396
+2023,MA,Morocco,P - 2510,Natural Phosphates,Raw materials and mining,647704373
+2023,MA,Morocco,P - 1604,Prepared Fish and Caviar,Plant products and food processing,584187162
+2023,MA,Morocco,P - 0810,Other Fresh Fruits,Plant products and food processing,564202128
+2023,MA,Morocco,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,513991747
+2023,MA,Morocco,P - 1605,Prepared Seafood,Plant products and food processing,508813039
+2023,MA,Morocco,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,435142859
+2023,MA,Morocco,P - 8704,Trucks,Machinery and transportation,430389430
+2023,TN,Tunisia,P - 8544,Electric Wire and Cable,Machinery and transportation,1942690870
+2023,TN,Tunisia,P - 8708,Vehicle Parts,Machinery and transportation,406442326
+2023,TN,Tunisia,P - 8536,Low Voltage Electrical Equipment,Machinery and transportation,381116827
+2023,TN,Tunisia,P - 6204,Women's Woven Suits,"Wood, paper and textiles",254001520
+2023,TN,Tunisia,P - 3105,Mixed Fertilizers,Chemicals and pharmaceuticals,238576856
+2023,TN,Tunisia,P - 2809,Phosphoric Acid,Chemicals and pharmaceuticals,214732761
+2023,TN,Tunisia,P - 3103,Phosphate Fertilizers,Chemicals and pharmaceuticals,46164688
+2023,TN,Tunisia,P - 0702,Tomatoes,Plant products and food processing,42117207
+2023,TN,Tunisia,P - 1604,Prepared Fish and Caviar,Plant products and food processing,36611247
+2023,TN,Tunisia,P - 2510,Natural Phosphates,Raw materials and mining,17852141
+2023,TN,Tunisia,P - 0810,Other Fresh Fruits,Plant products and food processing,11079333
+2023,TN,Tunisia,P - 8704,Trucks,Machinery and transportation,10064474
+2023,TN,Tunisia,P - 1605,Prepared Seafood,Plant products and food processing,8418679
+2023,TN,Tunisia,P - 8703,Passenger Cars,Machinery and transportation,8269113
+2023,TN,Tunisia,P - 8541,Semiconductors,Machinery and transportation,5047743
