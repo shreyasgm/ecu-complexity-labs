@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=04b4be4e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a313431b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7808,7 +7808,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=187dbd87">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d5e82ad6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7818,7 +7818,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1f5144e3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=db995b13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7831,6 +7831,17 @@ a.anchor-link {
 <span class="c1"># serves prebuilt Linux binaries of the same CRAN packages, so on Linux we</span>
 <span class="c1"># install from there and the same installs finish in about a minute. Mac and</span>
 <span class="c1"># Windows already get binaries from the regular CRAN mirror, so they keep it.</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">Sys.info</span><span class="p">()[[</span><span class="s">"sysname"</span><span class="p">]]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Linux"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1"># igraph's compiled code links against the GLPK system library, which</span>
+<span class="w">  </span><span class="c1"># Colab's image does not ship. No R install can supply a system library,</span>
+<span class="w">  </span><span class="c1"># so we add it with apt (a few seconds). This must run even when the R</span>
+<span class="w">  </span><span class="c1"># packages are already installed, or loading igraph fails with</span>
+<span class="w">  </span><span class="c1"># "libglpk.so.40: cannot open shared object file".</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">any</span><span class="p">(</span><span class="nf">grepl</span><span class="p">(</span><span class="s">"libglpk"</span><span class="p">,</span><span class="w"> </span><span class="nf">system</span><span class="p">(</span><span class="s">"ldconfig -p"</span><span class="p">,</span><span class="w"> </span><span class="n">intern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">cat</span><span class="p">(</span><span class="s">"Installing the GLPK system library that igraph needs ...\n"</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">system</span><span class="p">(</span><span class="s">"apt-get update -qq &amp;&amp; apt-get install -y -qq libglpk40"</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 <span class="n">needed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span>
 <span class="w">  </span><span class="nf">c</span><span class="p">(</span><span class="s">"economiccomplexity"</span><span class="p">,</span><span class="w"> </span><span class="s">"arrow"</span><span class="p">,</span><span class="w"> </span><span class="s">"dplyr"</span><span class="p">,</span><span class="w"> </span><span class="s">"tidyr"</span><span class="p">,</span><span class="w"> </span><span class="s">"readr"</span><span class="p">,</span><span class="w"> </span><span class="s">"ggplot2"</span><span class="p">),</span>
 <span class="w">  </span><span class="nf">rownames</span><span class="p">(</span><span class="nf">installed.packages</span><span class="p">())</span>
@@ -7928,7 +7939,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=31ccb994">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6a28f7cb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7938,7 +7949,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=67eb990d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cc535c9a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8003,7 +8014,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=434015bf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cdc2b330">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8013,7 +8024,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e9b0c636">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7c7f83a0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8133,7 +8144,7 @@ diversity (products per country):
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a66670b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=48b9c61f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8144,7 +8155,7 @@ diversity (products per country):
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7dd9b5ec">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6d9a1079">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8154,7 +8165,7 @@ diversity (products per country):
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=df7a93f3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6dbde3a8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8231,7 +8242,7 @@ diversity (products per country):
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=32be9324">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3ac3b653">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8241,7 +8252,7 @@ diversity (products per country):
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5d8198ea">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b16e2794">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8311,7 +8322,7 @@ diversity (products per country):
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1a2e0075">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=115907a1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8321,7 +8332,7 @@ diversity (products per country):
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d25eadd3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=05c6461c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10070,7 +10081,7 @@ IBAIBGYcgX8BsxePujatsBoAAAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=676d7e67">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ff088f6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10080,7 +10091,7 @@ IBAIBGYcgX8BsxePujatsBoAAAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=948aa6d2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8a10f6b4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10158,7 +10169,7 @@ IBAIBGYcgX8BsxePujatsBoAAAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=310c0eed">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc82db4c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10168,7 +10179,7 @@ IBAIBGYcgX8BsxePujatsBoAAAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=08c4b261">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cb6beef1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10207,7 +10218,7 @@ IBAIBGYcgX8BsxePujatsBoAAAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=888f2aea">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=154f9bea">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10261,7 +10272,7 @@ IBAIBGYcgX8BsxePujatsBoAAAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0930b98f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=042647c3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10271,7 +10282,7 @@ IBAIBGYcgX8BsxePujatsBoAAAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ef141459">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ffb5d549">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10327,7 +10338,7 @@ OK: the package reproduces the Python hand-roll (both rank correlations &gt; 0.9
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=689e497d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9ffe758b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10337,7 +10348,7 @@ OK: the package reproduces the Python hand-roll (both rank correlations &gt; 0.9
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c83ca6c6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e11f0897">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12104,7 +12115,7 @@ RU5ErkJggg==" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0a486330">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=50548da9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12137,7 +12148,7 @@ RU5ErkJggg==" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=13fb2b05">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=00d9eabd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12148,7 +12159,7 @@ RU5ErkJggg==" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41902f87">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=993c5dcf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
