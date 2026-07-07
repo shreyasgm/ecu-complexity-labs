@@ -1,0 +1,62 @@
+[project]
+name = "ecu_complexity_labs"
+version = "0.1.0"
+description = "Applied lab notebooks for the ECU Summer School of Economic Complexity at UM6P Rabat, July 6-10 2026"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # Core data science
+    "pandas",
+    "numpy",
+    "scipy",
+    "statsmodels",
+    "scikit-learn",
+    "ecomplexity",
+    # Visualization
+    "matplotlib",
+    "seaborn",
+    "plotly",
+    "squarify",
+    "adjusttext",
+    # Networks
+    "networkx",
+    "python-igraph",
+    # Data I/O
+    "pyarrow",
+    "polars",
+    "duckdb",
+    "openpyxl",
+    # HTTP / utilities
+    "requests",
+    "tqdm",
+    "python-dotenv",
+    "pycountry",
+    # Notebooks
+    "jupyterlab",
+    "ipykernel",
+    "ipywidgets",
+    # Dev
+    "ruff",
+    "nbconvert>=7.17.1",
+    "nbgrader>=0.9.5",
+    "jupytext>=1.19.3",
+    "pyyaml>=6.0.3",
+]
+
+[project.optional-dependencies]
+geo = [
+    "geopandas",
+    "shapely",
+    "contextily",
+]
+
+[tool.ruff]
+line-length = 99
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.uv]
+# This is a tutorial dependency environment, not a distributable package —
+# don't try to build/install the project root, just resolve the dependencies.
+package = false
