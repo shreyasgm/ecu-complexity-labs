@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7a62d773">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3c64c6b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7808,17 +7808,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6378c5ed">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1edcb6ca">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="0.-Setup">0. Setup<a class="anchor-link" href="#0.-Setup">¶</a></h2><p>Same packet as Day 1, plus the two product-space layout files. If anything is missing we stop and name the exact file.</p>
+<h2 id="0.-Setup">0. Setup<a class="anchor-link" href="#0.-Setup">¶</a></h2><p>Same packet as Day 1, plus the two product-space layout files. The notebook installs its two missing packages and downloads the data on first run, so it works on Colab's R runtime as well as locally.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5f8937dd">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0b5845cc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7826,7 +7826,31 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="nf">suppressMessages</span><span class="p">({</span>
+<div class="highlight hl-r"><pre><span></span><span class="c1"># Packages first. Colab's R runtime compiles CRAN packages from source, which</span>
+<span class="c1"># can take tens of minutes for arrow and igraph. Posit's public package manager</span>
+<span class="c1"># serves prebuilt Linux binaries of the same CRAN packages, so on Linux we</span>
+<span class="c1"># install from there and the same installs finish in about a minute. Mac and</span>
+<span class="c1"># Windows already get binaries from the regular CRAN mirror, so they keep it.</span>
+<span class="n">needed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">c</span><span class="p">(</span><span class="s">"economiccomplexity"</span><span class="p">,</span><span class="w"> </span><span class="s">"arrow"</span><span class="p">,</span><span class="w"> </span><span class="s">"dplyr"</span><span class="p">,</span><span class="w"> </span><span class="s">"readr"</span><span class="p">,</span><span class="w"> </span><span class="s">"ggplot2"</span><span class="p">),</span>
+<span class="w">  </span><span class="nf">rownames</span><span class="p">(</span><span class="nf">installed.packages</span><span class="p">())</span>
+<span class="p">)</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">needed</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">Sys.info</span><span class="p">()[[</span><span class="s">"sysname"</span><span class="p">]]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Linux"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">codename</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">system</span><span class="p">(</span><span class="s">". /etc/os-release &amp;&amp; echo $VERSION_CODENAME"</span><span class="p">,</span><span class="w"> </span><span class="n">intern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">options</span><span class="p">(</span>
+<span class="w">      </span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">CRAN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"https://packagemanager.posit.co/cran/__linux__/"</span><span class="p">,</span><span class="w"> </span><span class="n">codename</span><span class="p">,</span><span class="w"> </span><span class="s">"/latest"</span>
+<span class="w">      </span><span class="p">)),</span>
+<span class="w">      </span><span class="n">HTTPUserAgent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sprintf</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"R/%s R (%s)"</span><span class="p">,</span><span class="w"> </span><span class="nf">getRversion</span><span class="p">(),</span>
+<span class="w">        </span><span class="nf">paste</span><span class="p">(</span><span class="nf">getRversion</span><span class="p">(),</span><span class="w"> </span><span class="n">R.version</span><span class="o">$</span><span class="n">platform</span><span class="p">,</span><span class="w"> </span><span class="n">R.version</span><span class="o">$</span><span class="n">arch</span><span class="p">,</span><span class="w"> </span><span class="n">R.version</span><span class="o">$</span><span class="n">os</span><span class="p">)</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nf">install.packages</span><span class="p">(</span><span class="n">needed</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">suppressMessages</span><span class="p">({</span>
 <span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span><span class="w"> </span><span class="c1"># read the packet's .parquet files</span>
 <span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w"> </span><span class="c1"># filter, select, group, summarise</span>
 <span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span><span class="w"> </span><span class="c1"># read the reference tables</span>
@@ -7842,11 +7866,28 @@ a.anchor-link {
 <span class="n">YEAR</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="c1"># latest year in the packet</span>
 <span class="c1"># -------------------------------------------------------------------------------</span>
 
-<span class="c1"># Resolve the packet path relative to this notebook so it runs from a clean checkout.</span>
+<span class="c1"># Resolve the data packet: the course repository's copy when it exists, and</span>
+<span class="c1"># otherwise (Colab included) a one-time download of the two archives this</span>
+<span class="c1"># notebook needs from the course data release, the same source the Python</span>
+<span class="c1"># notebooks use.</span>
 <span class="n">PACKET</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">normalizePath</span><span class="p">(</span>
 <span class="w">  </span><span class="nf">file.path</span><span class="p">(</span><span class="s">".."</span><span class="p">,</span><span class="w"> </span><span class="s">".."</span><span class="p">,</span><span class="w"> </span><span class="s">"data"</span><span class="p">,</span><span class="w"> </span><span class="s">"processed"</span><span class="p">,</span><span class="w"> </span><span class="s">"morocco_data_packet"</span><span class="p">),</span>
 <span class="w">  </span><span class="n">mustWork</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span>
 <span class="p">)</span>
+<span class="n">DATA_RELEASE</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"https://github.com/shreyasgm/ecu-complexity-labs/releases/download/data-v1"</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">dir.exists</span><span class="p">(</span><span class="n">PACKET</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">PACKET</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">normalizePath</span><span class="p">(</span><span class="s">"morocco_data_packet"</span><span class="p">,</span><span class="w"> </span><span class="n">mustWork</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">options</span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="m">600</span><span class="p">,</span><span class="w"> </span><span class="nf">getOption</span><span class="p">(</span><span class="s">"timeout"</span><span class="p">)))</span><span class="w"> </span><span class="c1"># exports.zip is about 45 MB</span>
+<span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">folder</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"exports"</span><span class="p">,</span><span class="w"> </span><span class="s">"reference"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">dir.exists</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="n">PACKET</span><span class="p">,</span><span class="w"> </span><span class="n">folder</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nf">cat</span><span class="p">(</span><span class="s">"Downloading"</span><span class="p">,</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span><span class="w"> </span><span class="s">".zip"</span><span class="p">),</span><span class="w"> </span><span class="s">"from the course data release ...\n"</span><span class="p">)</span>
+<span class="w">      </span><span class="n">zf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tempfile</span><span class="p">(</span><span class="n">fileext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">".zip"</span><span class="p">)</span>
+<span class="w">      </span><span class="nf">download.file</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">DATA_RELEASE</span><span class="p">,</span><span class="w"> </span><span class="s">"/"</span><span class="p">,</span><span class="w"> </span><span class="n">folder</span><span class="p">,</span><span class="w"> </span><span class="s">".zip"</span><span class="p">),</span><span class="w"> </span><span class="n">zf</span><span class="p">,</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"wb"</span><span class="p">,</span><span class="w"> </span><span class="n">quiet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="w">      </span><span class="nf">unzip</span><span class="p">(</span><span class="n">zf</span><span class="p">,</span><span class="w"> </span><span class="n">exdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PACKET</span><span class="p">)</span>
+<span class="w">      </span><span class="nf">unlink</span><span class="p">(</span><span class="n">zf</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 
 <span class="c1"># Fail loud on anything missing, naming the exact file.</span>
 <span class="n">required</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
@@ -7861,9 +7902,9 @@ a.anchor-link {
 <span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nf">stop</span><span class="p">(</span>
 <span class="w">    </span><span class="s">"Required packet file(s) not found:\n  "</span><span class="p">,</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">missing</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"\n  "</span><span class="p">),</span><span class="w"> </span><span class="s">"\n"</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"Download 'morocco_data_packet' from the shared course link and unzip it into "</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"data/processed/. If you downloaded it before Day 2, re-fetch it so the "</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"product-space layout files are included."</span>
+<span class="w">    </span><span class="s">"Delete the morocco_data_packet folder and re-run this cell to retry the "</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"download. The product-space layout files were added to reference.zip on "</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"7 July, so a packet fetched before then needs the re-download."</span>
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 <span class="nf">cat</span><span class="p">(</span><span class="s">"Packet found:"</span><span class="p">,</span><span class="w"> </span><span class="n">PACKET</span><span class="p">,</span><span class="w"> </span><span class="s">"\n"</span><span class="p">)</span>
@@ -7893,7 +7934,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ef1e5597">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c3c68351">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7934,7 +7975,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a4f840b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2dadcdf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7944,7 +7985,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=207493cc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f379bb08">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7991,7 +8032,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=332be603">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=209ddff9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8001,7 +8042,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8980e33e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=df261273">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8035,7 +8076,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e05c8239">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=015cd25b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8136,7 +8177,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f60d76a5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70179465">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8146,7 +8187,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=27007dde">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e0aa1540">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8202,7 +8243,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cf40e519">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d9a75fed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8254,7 +8295,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02b8bbd8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fe9136df">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8264,7 +8305,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=aa0a5ffd">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=898238c5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8323,7 +8364,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68a5ec6c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=270f7caf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8333,7 +8374,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=90478f29">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=af85ddfa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8407,7 +8448,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3c8d6684">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=74969695">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15169,7 +15210,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=56ed5b93">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e259fbed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15205,7 +15246,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2517d14">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19ae804f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15215,7 +15256,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0b84efe2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=01fe3f0f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15271,7 +15312,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f02c5db7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=70d52469">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15322,7 +15363,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7fe6c0fd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=89455cb7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15332,7 +15373,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fc8f3e31">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5b05d12b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15421,7 +15462,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1a519966">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9687d9cc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15432,7 +15473,7 @@ AAAASUVORK5CYII=" width="420"/>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6cf93812">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7780dea6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

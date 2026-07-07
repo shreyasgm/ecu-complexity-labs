@@ -13,8 +13,8 @@ Open a notebook from the table below and save your own copy right away (File men
 | Day 1 reference, full | The worked answers, posted once the session is over | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shreyasgm/ecu-complexity-labs/blob/main/day1/day1_reference.ipynb) |
 | Day 2 workbook | The notebook you fill in during the Day 2 session | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shreyasgm/ecu-complexity-labs/blob/main/day2/day2_workbook.ipynb) |
 | Day 2 reference, student edition | The Day 2 analysis with the figures shown and the answer code blanked | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shreyasgm/ecu-complexity-labs/blob/main/day2/day2_reference_student.ipynb) |
-| Day 1 in R | The Day 1 analysis in R with the economiccomplexity package, already executed with all results shown | [Read the notebook](https://github.com/shreyasgm/ecu-complexity-labs/blob/main/day1/day1_reference_r.ipynb) |
-| Day 2 in R | The Day 2 analysis in R, already executed with all results shown | [Read the notebook](https://github.com/shreyasgm/ecu-complexity-labs/blob/main/day2/day2_reference_r.ipynb) |
+| Day 1 in R | The Day 1 analysis in R with the economiccomplexity package, already executed with all results shown | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shreyasgm/ecu-complexity-labs/blob/main/day1/day1_reference_r.ipynb) |
+| Day 2 in R | The Day 2 analysis in R, already executed with all results shown | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shreyasgm/ecu-complexity-labs/blob/main/day2/day2_reference_r.ipynb) |
 | Python warm-up | A short primer on the pandas basics the labs rely on | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shreyasgm/ecu-complexity-labs/blob/main/primers/primer_python.ipynb) |
 | R warm-up | A short primer on the tidyverse basics | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/shreyasgm/ecu-complexity-labs/blob/main/primers/primer_r.ipynb) |
 
@@ -22,7 +22,7 @@ The R warm-up opens in Colab's R runtime, which already has the tidyverse instal
 
 ## The R companions
 
-The "Day 1 in R" and "Day 2 in R" notebooks in the table repeat each day's analysis with the economiccomplexity package, so R users can check that the package reproduces the same numbers. They come already executed with every output and figure in place, which is why their links open the notebook for reading on GitHub rather than in Colab: they are companions to read along with, not exercises to run. Each day's folder also carries an `.html` copy of the same notebook that opens in any browser. Running one yourself needs a local R setup with economiccomplexity and arrow installed and the data packet unzipped into `data/processed/`, which most readers will not need.
+The "Day 1 in R" and "Day 2 in R" notebooks in the table repeat each day's analysis with the economiccomplexity package, so R users can check that the package reproduces the same numbers. They open in Colab's R runtime already executed, with every output and figure in place, so you can read them without running anything. If you do want to run one, its first cell installs the missing packages from Posit's prebuilt binary mirror (about a minute, instead of the very slow compile-from-source that plain `install.packages()` triggers on Colab) and downloads the data from the release, the same way the Python notebooks do. Each day's folder also carries an `.html` copy that opens in any browser with no setup at all.
 
 ## The data
 
