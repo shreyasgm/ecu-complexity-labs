@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5603f952">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e84efdd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7808,7 +7808,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5bc89f3b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9f28502e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7818,7 +7818,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cb9a82b5">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=887def69">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7830,6 +7830,18 @@ a.anchor-link {
 <span class="c1"># Posit's public package manager serves prebuilt Linux binaries of the same</span>
 <span class="c1"># CRAN packages, so on Linux we install from there. Mac and Windows already get</span>
 <span class="c1"># binaries from the regular CRAN mirror, so they keep it.</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">Sys.info</span><span class="p">()[[</span><span class="s">"sysname"</span><span class="p">]]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Linux"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1"># igraph's compiled code links against the GLPK system library, which</span>
+<span class="w">  </span><span class="c1"># Colab's image does not ship. No R install can supply a system library,</span>
+<span class="w">  </span><span class="c1"># so we add it with apt (a few seconds). This must run even when the R</span>
+<span class="w">  </span><span class="c1"># packages are already installed, or loading igraph (and with it</span>
+<span class="w">  </span><span class="c1"># economiccomplexity) fails with "libglpk.so.40: cannot open shared object</span>
+<span class="w">  </span><span class="c1"># file". Colab reads no repo-level dependency file, so the install lives here.</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">any</span><span class="p">(</span><span class="nf">grepl</span><span class="p">(</span><span class="s">"libglpk"</span><span class="p">,</span><span class="w"> </span><span class="nf">system</span><span class="p">(</span><span class="s">"ldconfig -p"</span><span class="p">,</span><span class="w"> </span><span class="n">intern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">cat</span><span class="p">(</span><span class="s">"Installing the GLPK system library that igraph needs ...\n"</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">system</span><span class="p">(</span><span class="s">"apt-get update -qq &amp;&amp; apt-get install -y -qq libglpk40"</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 <span class="n">needed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span>
 <span class="w">  </span><span class="nf">c</span><span class="p">(</span><span class="s">"economiccomplexity"</span><span class="p">,</span><span class="w"> </span><span class="s">"arrow"</span><span class="p">,</span><span class="w"> </span><span class="s">"dplyr"</span><span class="p">,</span><span class="w"> </span><span class="s">"fixest"</span><span class="p">,</span><span class="w"> </span><span class="s">"modelsummary"</span><span class="p">,</span><span class="w"> </span><span class="s">"gt"</span><span class="p">,</span><span class="w"> </span><span class="s">"ggplot2"</span><span class="p">),</span>
 <span class="w">  </span><span class="nf">rownames</span><span class="p">(</span><span class="nf">installed.packages</span><span class="p">())</span>
@@ -7930,7 +7942,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=678256db">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=86d29cbe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7970,7 +7982,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=91f830f8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aaabc204">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7980,7 +7992,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa031e25">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0b1a2c4e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8063,7 +8075,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=48c7fd32">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f62cc4f7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8073,7 +8085,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b60c9b51">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=05abf3bf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8149,7 +8161,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b490ec4f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4bd2445a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8159,7 +8171,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=47075bf6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c5c3e1d6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8197,7 +8209,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cfbfda75">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5c70c043">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8226,7 +8238,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div id="zqbtiqmmvk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qqyhloovza" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <table bgcolor="#FFFFFF" class="gt_table" data-quarto-bootstrap="false" data-quarto-disable-processing="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;">
 <thead style="border-style: none;">
 <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -8264,7 +8276,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a78d19f1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b0711ae4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8309,7 +8321,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a5f72ec4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e98d1b18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8320,7 +8332,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6b93ddf4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f6bf51f2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8331,7 +8343,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2a3ba63">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e665ef44">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8404,7 +8416,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0a9987f9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6c881f6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8415,7 +8427,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ca5bab4d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c4ebed21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8425,7 +8437,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8326ff7d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=deff9554">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8498,7 +8510,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b365189">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e24d0d45">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8508,7 +8520,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=720f544c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fbbf21b2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8552,7 +8564,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e5743484">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=673bef77">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9444,7 +9456,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=085e7969">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5adeedf2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9477,7 +9489,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fdc51389">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aa793d36">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9488,7 +9500,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb9f0948">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09afa385">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9499,7 +9511,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=76c4c9f3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6ec0aee4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9546,7 +9558,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div id="gnfdnxhpxb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="pgpsmzplgs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <table bgcolor="#FFFFFF" class="gt_table" data-quarto-bootstrap="false" data-quarto-disable-processing="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;">
 <thead style="border-style: none;">
 <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -9638,7 +9650,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1cc4a8ed">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7627ca15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9702,7 +9714,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5373b594">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1e31956b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9713,7 +9725,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=71406e06">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b1b60641">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9723,7 +9735,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2e88efe1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=741c7e5b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9778,7 +9790,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d815b205">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2323c8b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9842,7 +9854,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=153de73b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d67453a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9853,7 +9865,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8942c8d0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a5b143c0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9932,7 +9944,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd179e7f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8777b53">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9943,7 +9955,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b2002ab">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b62e75f5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9954,7 +9966,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d083e717">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f4ecfc75">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10013,7 +10025,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa9e76c8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9cce25a5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10047,7 +10059,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div id="dpuzetpoag" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="gvmwcbobyy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <table bgcolor="#FFFFFF" class="gt_table" data-quarto-bootstrap="false" data-quarto-disable-processing="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;">
 <thead style="border-style: none;">
 <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -10108,7 +10120,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2fc9a292">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=426f9c7b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10150,7 +10162,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=03b66f71">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5cb18ba5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10162,7 +10174,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a26c725f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f227a8b9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10174,7 +10186,7 @@ QAABBBBoJUCA1EqI8QgggAACCCCAAAIIIBCNwP8DkSi+IPceCmYAAAAASUVORK5CYII=" width="420
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c260095e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19a9a842">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
