@@ -41,6 +41,9 @@ dependencies = [
     "nbgrader>=0.9.5",
     "jupytext>=1.19.3",
     "pyyaml>=6.0.3",
+    "pyfixest>=0.60.0",
+    "maketables>=0.1.8",
+    "great-tables>=0.22.0",
 ]
 
 [project.optional-dependencies]
